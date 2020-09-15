@@ -13,10 +13,10 @@ public class UserService {
     }
 
     public User findById(int id) {
-        return userRepository.getPersonList()
-                .stream()
-                .filter(person -> person.getId() == id)
-                .findFirst()
-                .orElse(null);
+        return userRepository.findById(id);
+    }
+
+    public User createUser(User user) {
+        return userRepository.createUser(user);
     }
 }

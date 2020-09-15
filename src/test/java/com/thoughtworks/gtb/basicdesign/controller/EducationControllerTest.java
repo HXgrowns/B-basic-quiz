@@ -1,5 +1,8 @@
 package com.thoughtworks.gtb.basicdesign.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.thoughtworks.gtb.basicdesign.domain.Education;
+import com.thoughtworks.gtb.basicdesign.domain.User;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.AfterEach;
@@ -38,10 +41,29 @@ class EducationControllerTest {
 
     @Test
     void findByUserId() throws Exception {
-        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("http://localhost:8080/user/1/educations");
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("http://localhost:8080/users/1/educations");
         result = mockMvc.perform(request);
         result.andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].title",
                         Matchers.is("Secondary school specializing in artistic")));
+    }
+
+    @Test
+    public void should_add_education() throws Exception {
+        Education education = Education.builder().title("aaa")
+                .description("bbbb")
+                .year(2020)
+                .build();
+
+        ObjectMapper mapper = new ObjectMapper();
+        String data = mapper.writeValueAsString(education);
+
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post("http://localhost:8080/users/1/educations")
+                .contentType("application/json;charset=UTF-8")
+                .content(data);
+        result = mockMvc.perform(request);
+        result.andExpect(MockMvcResultMatchers.status().isCreated())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.year", Matchers.is(2020)));
+
     }
 }

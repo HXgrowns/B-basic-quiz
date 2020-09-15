@@ -20,4 +20,11 @@ public class UserController {
     public ResponseEntity<User> findById(@PathVariable int id) {
         return ResponseEntity.ok().body(userService.findById(id));
     }
+
+    @PostMapping
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(userService.createUser(user));
+
+    }
+
 }

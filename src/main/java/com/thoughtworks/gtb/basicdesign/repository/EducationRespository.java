@@ -28,4 +28,9 @@ public class EducationRespository {
         this.educations.add(secondary);
         this.educations.add(firstLevel);
     }
+
+    public Education createEducation(Education education) {
+        educations.add(education);
+        return education;
+    }
 }

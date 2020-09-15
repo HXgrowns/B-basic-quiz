@@ -2,10 +2,9 @@ package com.thoughtworks.gtb.basicdesign.controller;
 
 import com.thoughtworks.gtb.basicdesign.domain.Education;
 import com.thoughtworks.gtb.basicdesign.service.EducationService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,8 +16,14 @@ public class EducationController {
         this.educationService = educationService;
     }
 
-    @GetMapping("/user/{userId}/educations")
+    @GetMapping("/users/{userId}/educations")
     public ResponseEntity<List<Education>> findByUserId(@PathVariable int userId) {
         return ResponseEntity.ok().body(educationService.findByUserId(userId));
+    }
+
+    @PostMapping("/users/{userId}/educations")
+    public ResponseEntity<Education> createEducation(@PathVariable int userId, @RequestBody Education education) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(educationService.createEducation(userId, education));
     }
 }

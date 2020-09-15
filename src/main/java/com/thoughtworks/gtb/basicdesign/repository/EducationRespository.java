@@ -6,13 +6,14 @@ import lombok.Data;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Repository
 @Data
 @AllArgsConstructor
 public class EducationRespository {
-    private List<Education> educations = new ArrayList<>();
+    private List<Education> educations = Collections.synchronizedList(new ArrayList<>());
 
     public EducationRespository() {
         Education secondary = new Education(
@@ -29,7 +30,7 @@ public class EducationRespository {
         this.educations.add(firstLevel);
     }
 
-    public Education createEducation(Education education) {
+    public synchronized Education createEducation(Education education) {
         educations.add(education);
         return education;
     }

@@ -33,7 +33,7 @@ public class UserRepository {
                 .orElse(null);
     }
 
-    public User createUser(User user) {
+    public synchronized User createUser(User user) {
         personList.add(user);
         user.setId(personList.size());
         return user;

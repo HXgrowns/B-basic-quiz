@@ -12,13 +12,13 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class PersonControllerTest {
+class UserControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
     @Test
     public void should_find_Person_By_1() throws Exception {
-        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("http://localhost:8080/v1/persons/1");
+        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("http://localhost:8080/users/1");
         mockMvc.perform(request)
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is("KAMIL")));

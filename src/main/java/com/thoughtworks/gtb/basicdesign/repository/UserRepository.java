@@ -1,9 +1,9 @@
 package com.thoughtworks.gtb.basicdesign.repository;
 
-import com.thoughtworks.gtb.basicdesign.domain.Person;
+import com.thoughtworks.gtb.basicdesign.domain.Education;
+import com.thoughtworks.gtb.basicdesign.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -12,11 +12,11 @@ import java.util.List;
 @Repository
 @Data
 @AllArgsConstructor
-public class PersonRepository {
-    private List<Person> personList = new ArrayList<>();
+public class UserRepository {
+    private List<User> personList = new ArrayList<>();
 
-    public PersonRepository() {
-        this.personList.add(Person.builder()
+    public UserRepository() {
+        this.personList.add(User.builder()
                 .id(1)
                 .name("KAMIL")
                 .age(24)

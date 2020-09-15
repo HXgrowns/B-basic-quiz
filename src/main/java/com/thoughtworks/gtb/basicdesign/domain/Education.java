@@ -9,10 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Person {
-    private long id;
-    private String name;
-    private long age;
-    private String avatar;
+public class Education {
+    private long userId;
+    private long year;
+    private String title;
     private String description;
 }

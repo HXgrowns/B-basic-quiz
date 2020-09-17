@@ -20,6 +20,7 @@ public class Result {
                 .code(e.getCode())
                 .message(e.getMessage())
                 .timestamp(new Date())
+                // GTB: - 全都是 400？
                 .status(400)
                 .build();
     }

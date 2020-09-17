@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// GTB: - 没有任何校验的实现吗？
 @RestController
 public class EducationController {
     private EducationService educationService;
@@ -16,6 +17,7 @@ public class EducationController {
         this.educationService = educationService;
     }
 
+    // GTB: - 可以提取到 class 上去
     @GetMapping("/users/{userId}/educations")
     public ResponseEntity<List<Education>> findByUserId(@PathVariable int userId) {
         return ResponseEntity.ok().body(educationService.findByUserId(userId));

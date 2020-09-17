@@ -22,6 +22,7 @@ public class EducationService {
     }
 
     public List<Education> findByUserId(int userId) {
+        // GTB: 可以让 Repository 完成过滤的工作
         return educationRespository.getEducations()
                 .stream()
                 .filter(education -> userId == education.getUserId())
@@ -29,6 +30,7 @@ public class EducationService {
     }
 
     public Education createEducation(int userId, Education education) {
+        // GTB: 建议了解一下 Optional API
         User user = userRepository.findById(userId);
         if (user == null) {
             throw new BusinessException(ExceptionEnum.USER_NOT_FOUND);

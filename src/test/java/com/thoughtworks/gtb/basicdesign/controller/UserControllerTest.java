@@ -45,7 +45,7 @@ class UserControllerTest {
     @Test
     public void should_add_user() throws Exception {
         User user = User.builder().name("张三")
-                .age(18)
+                .age(18L)
                 .avatar("https://avatars2.githubusercontent.com/u/39233246?s=60&v=4")
                 .description("我是张三").build();
 

@@ -3,7 +3,8 @@ package com.thoughtworks.gtb.basicdesign.exception;
 public enum ExceptionEnum {
     SUCCESS(0, "success"),
     UNKNOWN_ERROR(1, "unknown_error"),
-    USER_NOT_FOUND(2, "user not found");
+    USER_NOT_FOUND(2, "user not found"),
+    ;
 
     private int code;
     private String message;

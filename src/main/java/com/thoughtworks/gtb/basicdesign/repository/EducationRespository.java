@@ -17,13 +17,13 @@ public class EducationRespository {
 
     public EducationRespository() {
         Education secondary = new Education(
-                1,
-                2005,
+                1L,
+                2005L,
                 "Secondary school specializing in artistic",
                 "Eos, explicabo, nam, tenetur et ab eius deserunt aspernatur ipsum ducimus quibusdam quis voluptatibus.");
         Education firstLevel = new Education(
-                1,
-                2009,
+                1L,
+                2009L,
                 "First level graduation in Graphic Design",
                 "Aspernatur, mollitia, quos maxime eius suscipit sed beatae ducimus quaerat quibusdam perferendis? Iusto, quibusdam asperiores unde repellat.");
         this.educations.add(secondary);

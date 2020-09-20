@@ -5,6 +5,7 @@ import com.thoughtworks.gtb.basicdesign.exception.ExceptionEnum;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.Instant;
 import java.util.Date;
 
 @Data
@@ -12,15 +13,24 @@ import java.util.Date;
 public class Result {
     private int code;
     private String message;
-    private Date timestamp;
+    private Instant timestamp;
     private long status;
 
     public static Result errorBusiness(ExceptionEnum e) {
         return Result.builder()
                 .code(e.getCode())
                 .message(e.getMessage())
-                .timestamp(new Date())
+                .timestamp(Instant.now())
                 .status(400)
                 .build();
     }
+
+    public static Result errorSystem(String message) {
+        return Result.builder()
+                .message(message)
+                .timestamp(Instant.now())
+                .status(400)
+                .build();
+    }
+
 }

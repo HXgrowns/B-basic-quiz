@@ -21,14 +21,14 @@ public class EducationService {
         this.userRepository = userRepository;
     }
 
-    public List<Education> findByUserId(int userId) {
+    public List<Education> findByUserId(Long userId) {
         return educationRespository.getEducations()
                 .stream()
-                .filter(education -> userId == education.getUserId())
+                .filter(education -> userId.equals(education.getUserId()))
                 .collect(Collectors.toList());
     }
 
-    public Education createEducation(int userId, Education education) {
+    public Education createEducation(Long userId, Education education) {
         User user = userRepository.findById(userId);
         if (user == null) {
             throw new BusinessException(ExceptionEnum.USER_NOT_FOUND);

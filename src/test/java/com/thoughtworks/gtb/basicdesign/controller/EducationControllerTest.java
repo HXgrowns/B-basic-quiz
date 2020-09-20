@@ -22,6 +22,7 @@ import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// GTB: 有测试，覆盖场景基本是 happy path
 @SpringBootTest
 @AutoConfigureMockMvc
 class EducationControllerTest {
@@ -39,6 +40,7 @@ class EducationControllerTest {
         }
     }
 
+    // GTB: - 测试名字风格怎么都不统一？
     @Test
     void findByUserId() throws Exception {
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("http://localhost:8080/users/1/educations");

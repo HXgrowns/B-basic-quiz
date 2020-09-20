@@ -20,6 +20,8 @@ public class Result {
         return Result.builder()
                 .code(e.getCode())
                 .message(e.getMessage())
+                .timestamp(new Date())
+                // GTB: - 全都是 400？
                 .timestamp(Instant.now())
                 .status(400)
                 .build();

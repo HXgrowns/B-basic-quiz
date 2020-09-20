@@ -1,11 +1,11 @@
 package com.thoughtworks.gtb.basicdesign.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.thoughtworks.gtb.basicdesign.domain.Education;
-import com.thoughtworks.gtb.basicdesign.domain.User;
-import org.hamcrest.Matcher;
+import com.thoughtworks.gtb.basicdesign.dto.Education;
+import com.thoughtworks.gtb.basicdesign.dto.User;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 // GTB: 有测试，覆盖场景基本是 happy path，已覆盖异常
 @SpringBootTest
@@ -30,6 +30,42 @@ class EducationControllerTest {
     private MockMvc mockMvc;
 
     private ResultActions result;
+    @Autowired
+    private ObjectMapper objectMapper;
+
+    @BeforeEach
+    void setUp() throws Exception {
+        User kamil = User.builder()
+                .name("KAMIL")
+                .age(24L)
+                .avatar("https://inews.gtimg.com/newsapp_match/0/3581582328/0")
+                .description("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, non, dolorem, cumque distinctio magni quam expedita velit laborum sunt amet facere tempora ut fuga aliquam ad asperiores voluptatem dolorum! Quasi.")
+                .build();
+        String userString = objectMapper.writeValueAsString(kamil);
+        mockMvc.perform(post("http://localhost:8080/users")
+                .contentType("application/json;charset=UTF-8")
+                .content(userString));
+
+        Education secondary = Education.builder()
+                .year(2005L)
+                .title("Secondary school specializing in artistic")
+                .description("Eos, explicabo, nam, tenetur et ab eius deserunt aspernatur ipsum ducimus quibusdam quis voluptatibus.")
+                .build();
+        String secondaryString = objectMapper.writeValueAsString(secondary);
+        mockMvc.perform(post("http://localhost:8080/users/1/educations")
+                .contentType("application/json;charset=UTF-8")
+                .content(secondaryString));
+
+        Education first = Education.builder()
+                .year(2009L)
+                .title("First level graduation in Graphic Designc")
+                .description("Aspernatur, mollitia, quos maxime eius suscipit sed beatae ducimus quaerat quibusdam perferendis? Iusto, quibusdam asperiores unde repellat.")
+                .build();
+        String firstString = objectMapper.writeValueAsString(first);
+        mockMvc.perform(post("http://localhost:8080/users/1/educations")
+                .contentType("application/json;charset=UTF-8")
+                .content(firstString));
+    }
 
     @AfterEach
     void tearDown() throws UnsupportedEncodingException {
@@ -60,7 +96,7 @@ class EducationControllerTest {
         ObjectMapper mapper = new ObjectMapper();
         String data = mapper.writeValueAsString(education);
 
-        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post("http://localhost:8080/users/1/educations")
+        MockHttpServletRequestBuilder request = post("http://localhost:8080/users/1/educations")
                 .contentType("application/json;charset=UTF-8")
                 .content(data);
         result = mockMvc.perform(request);
@@ -79,7 +115,7 @@ class EducationControllerTest {
         ObjectMapper mapper = new ObjectMapper();
         String data = mapper.writeValueAsString(education);
 
-        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post("http://localhost:8080/users/1/educations")
+        MockHttpServletRequestBuilder request = post("http://localhost:8080/users/1/educations")
                 .contentType("application/json;charset=UTF-8")
                 .content(data);
         result = mockMvc.perform(request);
@@ -98,7 +134,7 @@ class EducationControllerTest {
         ObjectMapper mapper = new ObjectMapper();
         String data = mapper.writeValueAsString(education);
 
-        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post("http://localhost:8080/users/5/educations")
+        MockHttpServletRequestBuilder request = post("http://localhost:8080/users/5/educations")
                 .contentType("application/json;charset=UTF-8")
                 .content(data);
         result = mockMvc.perform(request);

@@ -1,7 +1,7 @@
 package com.thoughtworks.gtb.basicdesign.exception;
 
 public class BusinessException extends RuntimeException {
-    private ExceptionEnum exceptionEnum;
+    private final ExceptionEnum exceptionEnum;
 
     public BusinessException(ExceptionEnum exceptionEnum) {
         this.exceptionEnum = exceptionEnum;

@@ -1,5 +1,6 @@
-package com.thoughtworks.gtb.basicdesign.exception;
+package com.thoughtworks.gtb.basicdesign.component;
 
+import com.thoughtworks.gtb.basicdesign.exception.BusinessException;
 import com.thoughtworks.gtb.basicdesign.response.Result;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;

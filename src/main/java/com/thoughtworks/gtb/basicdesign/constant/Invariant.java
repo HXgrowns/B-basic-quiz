@@ -1,6 +1,6 @@
-package com.thoughtworks.gtb.basicdesign.domain;
+package com.thoughtworks.gtb.basicdesign.constant;
 
-public class Constant {
+public class Invariant {
     public static final int NAME_MIN_LENGTH = 1;
     public static final int NAME_MAX_LENGTH = 128;
     public static final int AGE_MIN = 17;

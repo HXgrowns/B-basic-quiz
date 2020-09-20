@@ -1,4 +1,4 @@
-package com.thoughtworks.gtb.basicdesign.domain;
+package com.thoughtworks.gtb.basicdesign.constant;
 
 public class ErrorMessage {
     public static final String YEAR_IS_EMPTY = "year is null";

@@ -1,5 +1,6 @@
-package com.thoughtworks.gtb.basicdesign.domain;
+package com.thoughtworks.gtb.basicdesign.dto;
 
+import com.thoughtworks.gtb.basicdesign.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,8 +11,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import static com.thoughtworks.gtb.basicdesign.domain.Constant.*;
-import static com.thoughtworks.gtb.basicdesign.domain.ErrorMessage.*;
+import static com.thoughtworks.gtb.basicdesign.constant.Invariant.*;
+import static com.thoughtworks.gtb.basicdesign.constant.ErrorMessage.*;
 
 @Data
 @AllArgsConstructor
@@ -34,4 +35,14 @@ public class User {
 
     @Size(max = DESCRIPTION_MAX_LENGTH, message = DESCRIPTION_OUT_OF_RANGE)
     private String description;
+
+    public UserEntity toUserEntity() {
+        return UserEntity.builder()
+                .id(this.id)
+                .name(this.name)
+                .age(this.age)
+                .avatar(this.avatar)
+                .description(this.description)
+                .build();
+    }
 }

@@ -1,6 +1,6 @@
 package com.thoughtworks.gtb.basicdesign.controller;
 
-import com.thoughtworks.gtb.basicdesign.domain.Education;
+import com.thoughtworks.gtb.basicdesign.dto.Education;
 import com.thoughtworks.gtb.basicdesign.service.EducationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

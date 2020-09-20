@@ -1,6 +1,6 @@
 package com.thoughtworks.gtb.basicdesign.controller;
 
-import com.thoughtworks.gtb.basicdesign.domain.User;
+import com.thoughtworks.gtb.basicdesign.dto.User;
 import com.thoughtworks.gtb.basicdesign.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

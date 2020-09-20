@@ -1,7 +1,5 @@
 package com.thoughtworks.gtb.basicdesign.domain;
 
-import javax.smartcardio.ATR;
-
 public class ErrorMessage {
     public static final String YEAR_IS_EMPTY = "year is null";
     public static final String YEAR_OUT_OF_RANGE = "year out of range";

@@ -1,6 +1,5 @@
 package com.thoughtworks.gtb.basicdesign.repository;
 
-import com.thoughtworks.gtb.basicdesign.domain.Education;
 import com.thoughtworks.gtb.basicdesign.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -21,8 +21,7 @@ public class EducationService {
         this.userRepository = userRepository;
     }
 
-    public List<Education> findByUserId(int userId) {
-        // GTB: 可以让 Repository 完成过滤的工作
+    // GTB: 可以让 Repository 完成过滤的工作,已用注解过滤
     public List<Education> findByUserId(Long userId) {
         return educationRespository.getEducations()
                 .stream()

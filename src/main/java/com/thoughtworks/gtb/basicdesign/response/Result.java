@@ -19,9 +19,7 @@ public class Result {
                 .code(e.getCode())
                 .message(e.getMessage())
                 .timestamp(Instant.now())
-                // GTB: - 全都是 400？
                 .timestamp(Instant.now())
-                .status(400)
                 .build();
     }
 
@@ -29,7 +27,6 @@ public class Result {
         return Result.builder()
                 .message(message)
                 .timestamp(Instant.now())
-                .status(400)
                 .build();
     }
 

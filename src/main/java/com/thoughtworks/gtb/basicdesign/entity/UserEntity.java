@@ -24,13 +24,4 @@ public class UserEntity {
     private String avatar;
     private String description;
 
-    public User toUser() {
-        return User.builder()
-                .id(this.id)
-                .name(this.name)
-                .age(this.age)
-                .avatar(this.avatar)
-                .description(this.description)
-                .build();
-    }
 }

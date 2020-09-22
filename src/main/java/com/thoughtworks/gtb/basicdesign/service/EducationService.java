@@ -7,6 +7,7 @@ import com.thoughtworks.gtb.basicdesign.exception.BusinessException;
 import com.thoughtworks.gtb.basicdesign.exception.ExceptionEnum;
 import com.thoughtworks.gtb.basicdesign.repository.EducationRepository;
 import com.thoughtworks.gtb.basicdesign.repository.UserRepository;
+import com.thoughtworks.gtb.basicdesign.utils.Convert;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,13 +27,14 @@ public class EducationService {
     // GTB: 可以让 Repository 完成过滤的工作,已用注解过滤
     public List<Education> findByUserId(Long userId) {
         userRepository.findById(userId).orElseThrow(() -> new BusinessException(ExceptionEnum.USER_NOT_FOUND));
-        return educationRepository.findByUserId(userId).stream().map(EducationEntity::toEducation).collect(Collectors.toList());
+        return educationRepository.findByUserId(userId).stream().map(Convert::toEducation).collect(Collectors.toList());
     }
 
     @Transactional
     public Education createEducation(Long userId, Education education) {
         userRepository.findById(userId).orElseThrow(() -> new BusinessException(ExceptionEnum.USER_NOT_FOUND));
         education.setUser(User.builder().id(userId).build());
-        return educationRepository.save(education.toEducationEntity()).toEducation();
+        EducationEntity educationEntity = educationRepository.save(Convert.toEducationEntity(education));
+        return Convert.toEducation(educationEntity);
     }
 }

@@ -30,16 +30,4 @@ public class Education {
     @Size(min = EDUCATION_DESCRIPTION_MIN_LENGTH, max = EDUCATION_DESCRIPTION_MAX_LENGTH,message = EDUCATION_DESCRIPTION_OUT_OF_RANGE)
     private String description;
 
-    public EducationEntity toEducationEntity() {
-        UserEntity userEntity = null;
-        if (this.user != null) {
-            userEntity = UserEntity.builder().id(this.user.getId()).build();
-        }
-        return EducationEntity.builder()
-                .title(this.title)
-                .user(userEntity)
-                .year(this.year)
-                .description(this.description)
-                .build();
-    }
 }

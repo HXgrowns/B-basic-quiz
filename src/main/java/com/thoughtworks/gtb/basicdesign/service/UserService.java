@@ -1,7 +1,9 @@
 package com.thoughtworks.gtb.basicdesign.service;
 
 import com.thoughtworks.gtb.basicdesign.dto.User;
+import com.thoughtworks.gtb.basicdesign.entity.UserEntity;
 import com.thoughtworks.gtb.basicdesign.repository.UserRepository;
+import com.thoughtworks.gtb.basicdesign.utils.Convert;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,10 +15,12 @@ public class UserService {
     }
 
     public User findById(Long id) {
-        return userRepository.findById(id).orElseGet(null).toUser();
+        UserEntity userEntity = userRepository.findById(id).orElseGet(null);
+        return Convert.toUser(userEntity);
     }
 
-    public  User createUser(User user) {
-        return userRepository.save(user.toUserEntity()).toUser();
+    public User createUser(User user) {
+        UserEntity userEntity = userRepository.save(Convert.toUserEntity(user));
+        return Convert.toUser(userEntity);
     }
 }

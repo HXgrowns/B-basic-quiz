@@ -36,13 +36,4 @@ public class User {
     @Size(max = DESCRIPTION_MAX_LENGTH, message = DESCRIPTION_OUT_OF_RANGE)
     private String description;
 
-    public UserEntity toUserEntity() {
-        return UserEntity.builder()
-                .id(this.id)
-                .name(this.name)
-                .age(this.age)
-                .avatar(this.avatar)
-                .description(this.description)
-                .build();
-    }
 }

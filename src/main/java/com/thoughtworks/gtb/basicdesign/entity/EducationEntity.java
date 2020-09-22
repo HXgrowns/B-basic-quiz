@@ -28,16 +28,4 @@ public class EducationEntity {
     private String title;
     private String description;
 
-    public Education toEducation() {
-        User user = null;
-        if (this.user != null) {
-            user = User.builder().id(this.user.getId()).build();
-        }
-        return Education.builder()
-                .user(user)
-                .title(this.title)
-                .description(this.description)
-                .year(this.year)
-                .build();
-    }
 }

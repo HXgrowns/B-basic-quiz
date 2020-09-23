@@ -7,6 +7,10 @@ import com.thoughtworks.gtb.basicdesign.entity.UserEntity;
 
 public class Convert {
     public static User toUser(UserEntity userEntity) {
+        if (userEntity == null) {
+            return null;
+        }
+
         return User.builder()
                 .id(userEntity.getId())
                 .name(userEntity.getName())
@@ -17,6 +21,9 @@ public class Convert {
     }
 
     public static UserEntity toUserEntity(User user) {
+        if (user == null)
+            return null;
+
         return UserEntity.builder()
                 .id(user.getId())
                 .name(user.getName())
@@ -27,6 +34,9 @@ public class Convert {
     }
 
     public static EducationEntity toEducationEntity(Education education) {
+        if (education == null)
+            return null;
+
         UserEntity userEntity = null;
         if (education.getUser() != null) {
             userEntity = UserEntity.builder().id(education.getUser().getId()).build();
@@ -40,6 +50,9 @@ public class Convert {
     }
 
     public static Education toEducation(EducationEntity educationEntity) {
+        if (educationEntity == null)
+            return null;
+
         User user = null;
         if (educationEntity.getUser() != null) {
             user = User.builder().id(educationEntity.getUser().getId()).build();

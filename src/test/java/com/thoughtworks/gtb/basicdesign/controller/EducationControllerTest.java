@@ -91,8 +91,6 @@ class EducationControllerTest {
                         .andReturn()
                         .getResponse();
 
-                assertThat(response.getContentAsString()).isEqualTo(
-                        educationJacksonTester.write(education).getJson());
                 verify(educationService).findByUserId(1L);
             }
         }
